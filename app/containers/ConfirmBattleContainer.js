@@ -12,7 +12,7 @@ var ConfirmBattleContainer = React.createClass({
     console.log('getInitialState');
     return {
       isLoading: true,
-      playerInfo: []
+      playersInfo: []
     }
   },
   componentWillMount: function(){
@@ -35,6 +35,16 @@ var ConfirmBattleContainer = React.createClass({
       }.bind(this));
       // use .bind to set the context of this (on this.setState) so that it's the same context as the 'this' w/in componentDidMount (as opposed to context of the inner function)
   },
+  handleInitiateBattle: function(){
+    // need to go to results path after done w/ battle route, but still want to push playersInfo data to new route...
+    this.context.router.push({
+      pathname: '/results',
+      state: {
+        playersInfo: this.state.playersInfo
+      }
+    })
+  },
+
   componentWillReceiveProps: function(){
     console.log('componentWillReceiveProps');
   },
@@ -43,7 +53,11 @@ var ConfirmBattleContainer = React.createClass({
   },
   render: function(){
     return (
-      <ConfirmBattle isLoading={this.state.isLoading} playersInfo={this.state.playersInfo} />
+      <ConfirmBattle 
+      isLoading={this.state.isLoading} 
+      onInitiateBattle={this.handleInitiateBattle}
+      playersInfo={this.state.playersInfo} 
+      />
     )
   }
 });
