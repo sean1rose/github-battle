@@ -1,5 +1,6 @@
 var React = require('react');
 var ConfirmBattle = require('../components/ConfirmBattle');
+var githubHelpers = require('../utils/githubHelpers');
 
 
 var ConfirmBattleContainer = React.createClass({
@@ -18,10 +19,21 @@ var ConfirmBattleContainer = React.createClass({
     console.log('componentWillMount');
   },
   componentDidMount: function(){
-    console.log('componentDidMount');
+    // want to bind to THIS this...
     var query = this.props.location.query;
     // grab usernames to fetch info from github api then update the state and after fetch change isLoading to false
-    console.log('QUERY', query);
+    // passing an array of usernames
+    githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+      .then(function(players){
+        // when promise resolves...
+        // want to set the state!
+        this.setState({
+          isLoading: false,
+          playersInfo: [players[0], players[1]]
+        })
+        // console.log('players - ', players);
+      }.bind(this));
+      // use .bind to set the context of this (on this.setState) so that it's the same context as the 'this' w/in componentDidMount (as opposed to context of the inner function)
   },
   componentWillReceiveProps: function(){
     console.log('componentWillReceiveProps');
