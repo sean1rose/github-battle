@@ -9,14 +9,14 @@ var ConfirmBattleContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   getInitialState: function(){
-    console.log('getInitialState');
+    // console.log('getInitialState');
     return {
       isLoading: true,
       playersInfo: []
     }
   },
   componentWillMount: function(){
-    console.log('componentWillMount');
+    // console.log('componentWillMount');
   },
   componentDidMount: function(){
     // want to bind to THIS this...
@@ -46,10 +46,10 @@ var ConfirmBattleContainer = React.createClass({
   },
 
   componentWillReceiveProps: function(){
-    console.log('componentWillReceiveProps');
+    // console.log('componentWillReceiveProps');
   },
   componentWillUnmount: function(){
-    console.log('componentWillUnmount');
+    // console.log('componentWillUnmount');
   },
   render: function(){
     return (

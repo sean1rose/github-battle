@@ -52,14 +52,14 @@ var PromptContainer = React.createClass({
           playerTwo: this.state.username
         }
       })
-      console.log(this.context)
+      // console.log(this.context)
     }
     else{
       // if on playerOne -> go to playerTwo
       // just pass new route
       this.context.router.push('/playerTwo/' + this.state.username)
 
-      console.log(this.context)
+      // console.log(this.context)
     }
 
   },
@@ -67,7 +67,7 @@ var PromptContainer = React.createClass({
   // eventually want to tie up the button so that it brings user to next route -> use onSubmit method on the form element
   // need to specify what items to pass into Prompt
   render: function(){
-    console.log(this);
+    // console.log(this);
     // props that u pass to other components as functions have the 'on'prefix
     // and actual function itself has the handle 
 
